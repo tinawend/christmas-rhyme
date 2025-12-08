@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# 🎄 Christmas Rhyme Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A festive web application that uses AI to generate rhymes for your Christmas gifts! Built with React, TailwindCSS, and Google Gemini API.
 
-Currently, two official plugins are available:
+![Christmas Rhyme Generator](https://images.unsplash.com/photo-1512389142860-9c449e58a543?q=80&w=2069&auto=format&fit=crop)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Getting Started
 
-## React Compiler
+Follow these instructions to get the project up and running on your local machine.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js (v18 or higher)
+- npm (comes with Node.js)
+- A Google Gemini API Key (Free)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🛠️ Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/tinawend/christmas-rhyme.git
+    cd christmas-rhyme
+    ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3.  **Configure Environment Variables**
+    - Create a file named `.env` in the root directory.
+    - Add your Google Gemini API key:
+      ```env
+      VITE_GEMINI_API_KEY=your_actual_api_key_here
+      ```
+    - You can get a free API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+4.  **Start the Development Server**
+    ```bash
+    npm run dev
+    ```
+    Open your browser and navigate to `http://localhost:5173` (or the link shown in your terminal).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ✨ Features
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **AI-Powered Rhymes**: Generates creative rhymes based on the gift and desired tone.
+- **Smart Rhyming**: Ensures the rhyme ends with a word that rhymes with the gift (without revealing it!).
+- **Festive Design**: "White Christmas" theme with snow animations and glassmorphism.
+- **Responsive**: Works on mobile and desktop.
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React + TypeScript + Vite
+- **Styling**: TailwindCSS
+- **AI**: Google Gemini API (`@google/generative-ai`)
+- **Icons**: Lucide React
+- **Animations**: Framer Motion
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+Merry Christmas! 🎅🎁
