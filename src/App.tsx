@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { generateRhyme } from './utils/gemini';
-import { Gift, Sparkles, Snowflake, Send, Star } from 'lucide-react';
+import { Gift, Sparkles, Snowflake, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
