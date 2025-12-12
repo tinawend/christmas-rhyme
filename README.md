@@ -35,11 +35,30 @@ Follow these instructions to get the project up and running on your local machin
       ```
     - You can get a free API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
 
-4.  **Start the Development Server**
-    ```bash
-    npm run dev
-    ```
-    Open your browser and navigate to `http://localhost:5173` (or the link shown in your terminal).
+### 🌐 Deploy to GitHub Pages (Free)
+
+This project is configured to deploy automatically to GitHub Pages!
+
+1.  **Push the code** to GitHub (already done).
+2.  **Add your API Key**:
+    - Go to your GitHub Repository > **Settings** > **Secrets and variables** > **Actions**.
+    - Click **New repository secret**.
+    - Name: `VITE_GEMINI_API_KEY`
+    - Value: Your actual API key.
+3.  **Enable Pages**:
+    - Go to **Settings** > **Pages**.
+    - Under **Build and deployment** > **Source**, select **GitHub Actions**.
+4.  **Wait for Deployment**:
+    - Go to the **Actions** tab to see the deployment running.
+    - Once finished, your site will be live at `https://your-username.github.io/christmas-rhyme/`.
+
+### 🔒 Security Note
+Since this is a public website, you **MUST** restrict your API key to prevent others from using it.
+1.  Go to [Google AI Studio API Keys](https://aistudio.google.com/app/apikey).
+2.  Click on your key.
+3.  Under **API restrictions**, select **Restrict key**.
+4.  Under **Application restrictions**, select **Websites**.
+5.  Add your website URL (e.g., `https://www.techmamman.se/*` or `https://tinawend.github.io/*`).
 
 ## ✨ Features
 
