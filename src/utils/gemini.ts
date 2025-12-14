@@ -15,13 +15,29 @@ export const generateRhyme = async (gift: string, tone: string): Promise<string>
         "gemini-pro"
     ];
 
-    const prompt = `Du är en expert på svenska julrim. Uppgift: Skriv ett rim för julklappen "${gift}".
+    const prompt = `Du är en expert på svenska julrim.
+    Uppgift: Skriv ett rim för julklappen "${gift}".
     Ton: "${tone}".
-    Regler:
-    1. Rimmet ska vara 4-8 rader långt.
-    2. Det absolut sista ordet i rimmet MÅSTE rimma perfekt (fullrim) på "${gift}".
-    3. Du får INTE använda ordet "${gift}" i texten.
-    4. Se till att rimmet fungerar med svenskt uttal (t.ex. "Bok" rimmar på "Klok", men INTE på "Tjock").`;
+    
+    STRÄNGA INSTRUKTIONER:
+    1. Svara ENDAST med rimmet. Ingen annan text.
+    2. Använd INTE fetstil (inga **stjärnor**).
+    3. Du får INTE skriva ordet "${gift}".
+    4. Rimmet SKA sluta med en "cliffhanger" (tre punkter).
+    
+    STRUKTUR (Följ denna exakt):
+    Rad 1: [Rimmar på A]
+    Rad 2: [Rimmar på A]
+    Rad 3: [Slutar på ett ord som rimmar på "${gift}"]
+    Rad 4: [Kort fras som slutar med "..."] (t.ex. "i denna...", "med denna...", "får du av mig...")
+    
+    EXEMPEL (Klapp: Bil):
+    "Här ska du få se på fart och fläkt,
+    denna grej är faktiskt helt perfekt.
+    Du kan åka många mil,
+    med denna lilla..."
+    
+    (Observera: Ordet "mil" rimmar på "bil", och rimmet slutar med "...")`;
 
     let lastError: any = null;
 
