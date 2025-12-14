@@ -9,10 +9,10 @@ export const generateRhyme = async (gift: string, tone: string): Promise<string>
     const genAI = new GoogleGenerativeAI(apiKey);
     const modelsToTry = [
         "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
         "gemini-2.0-flash",
         "gemini-2.0-flash-lite",
-        "gemini-1.5-flash",
-        "gemini-pro"
+        "gemini-flash-latest"
     ];
 
     const prompt = `Du är en expert på svenska julrim.
@@ -54,18 +54,22 @@ export const generateRhyme = async (gift: string, tone: string): Promise<string>
         }
     }
 
-    // If we get here, all models failed. Try to list available models.
-    let availableModels = "Kunde inte hämta lista.";
-    try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
-        const data = await response.json();
-        if (data.models) {
-            availableModels = data.models.map((m: any) => m.name.replace('models/', '')).join(', ');
-        }
-    } catch (listError) {
-        console.error("Failed to list models:", listError);
+    // If we get here, all models failed. Check for common error types.
+    const errorMessage = lastError?.message || "";
+
+    // Check for rate limit errors
+    if (errorMessage.includes("429") ||
+        errorMessage.includes("RESOURCE_EXHAUSTED") ||
+        errorMessage.includes("quota") ||
+        errorMessage.includes("rate limit")) {
+        throw new Error("🎄 Gränsen för antal rim har nåtts idag. Försök igen imorgon efter kl 09:00! 🎅");
     }
 
-    const errorMessage = lastError?.message || "Okänt fel";
-    throw new Error(`Kunde inte generera rim. Inga modeller fungerade. (Sista felet: ${errorMessage}). Tillgängliga modeller för din nyckel: ${availableModels}`);
+    // Check for API key restriction errors
+    if (errorMessage.includes("API_KEY") || errorMessage.includes("403")) {
+        throw new Error("API-nyckeln är blockerad. Kontakta administratören.");
+    }
+
+    // Generic error with technical details for debugging
+    throw new Error(`Kunde inte generera rim just nu. Försök igen om en stund. 🎁`);
 };
