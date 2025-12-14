@@ -9,10 +9,10 @@ export const generateRhyme = async (gift: string, tone: string): Promise<string>
     const genAI = new GoogleGenerativeAI(apiKey);
     const modelsToTry = [
         "gemini-2.5-flash",
-        "gemini-2.5-flash-lite",
         "gemini-2.0-flash",
-        "gemini-2.0-flash-lite",
-        "gemini-flash-latest"
+        "gemini-flash-latest",
+        "gemini-2.5-flash-lite",
+        "gemini-2.0-flash-lite"
     ];
 
     const prompt = `Du är en expert på svenska julrim.
